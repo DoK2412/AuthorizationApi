@@ -15,13 +15,6 @@ async def create_access_tokens(data: dict):
     return jwt.encode(to_encode, os.getenv("AUTH_JWT_KEY"), algorithm=os.getenv("ALGORITHM"))
 
 
-async def create_access_argo_tokens(data: dict):
-    to_encode = data.copy()
-    expires = datetime.utcnow() + timedelta(days=int(os.getenv("ACCESS_TOKEN_ARGO_EXPIRE_DAYS")))
-    to_encode.update({"exp": expires})
-    return jwt.encode(to_encode, os.getenv("AUTH_JWT_KEY"), algorithm=os.getenv("ALGORITHM"))
-
-
 async def create_refresh_tokens(data: dict):
     to_encode = data.copy()
     expires = datetime.utcnow() + timedelta(days=int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS")))

@@ -11,3 +11,7 @@ class ConfirmRegistration(BaseModel):
     username: str = Query(description='Имя пользователя')
     password_hash: str = Query(description='Пароль пользователя')
     user_email: str = Query(description="Электронная почта пользователя")
+
+class Login(BaseModel):
+    email: str = Query(description='Имя пользователя')
+    password: str = Query(description='Пароль пользователя')

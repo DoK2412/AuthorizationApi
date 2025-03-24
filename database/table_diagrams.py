@@ -29,3 +29,11 @@ class User(Base):
     blocking_data = Column(Time)
     role = Column(Integer, ForeignKey("user_role.id"))
 
+class Token(Base):
+    __tablename__ = 'user_token_access'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("user.id"))
+    access_token = Column(String, nullable=False)
+    refresh_token = Column(String, nullable=False)
+    create_date = Column(Time, nullable=False)
+    update_date = Column(Time)
